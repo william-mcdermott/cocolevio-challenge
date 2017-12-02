@@ -1,5 +1,6 @@
 const toWhomToSell = (productNeeded, productForSale) => {
-
+  productNeeded = productNeeded.sort((a, b) => b.price - a.price)
+  return productNeeded
 }
 
 const companyData = [{
@@ -15,13 +16,13 @@ const companyData = [{
   amount: 3,
   price: 8
 },{
-  id: 'D',
-  amount: 4,
-  price: 9
-},{
   id: 'E',
   amount: 5,
   price: 10
+},{
+  id: 'D',
+  amount: 4,
+  price: 9
 },{
   id: 'F',
   amount: 6,
