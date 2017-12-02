@@ -1,7 +1,16 @@
 const toWhomToSell = (productNeeded, productForSale) => {
-  productNeeded = productNeeded.sort((a, b) => b.price - a.price)
-  return productNeeded
-}
+  productNeeded = productNeeded.sort((a, b) => b.price - a.price);
+  const soldPerCompany = productNeeded.map((company) => {
+    if (productForSale <= company.amount) {
+      company.bought = productForSale;
+    } else {
+      company.bought = company.amount;
+    };
+    productForSale = productForSale - company.bought
+    return company
+  });
+  return soldPerCompany;
+};
 
 const companyData = [{
   id: 'A',
@@ -45,4 +54,4 @@ const companyData = [{
   price: 30
 }]
 
-console.log(toWhomToSell(companyData, 10));
+console.log(toWhomToSell(companyData, 42));
