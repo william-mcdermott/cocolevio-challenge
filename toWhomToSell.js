@@ -19,7 +19,7 @@ const generateSaleStatement = (company, productForSale) => {
   if (company.bought > 0 && productForSale > 0) {
     saleStatement += `${company.bought} ${company.bought > 1 ? 'units' : 'unit'} to Company ${company.id}, `;
   } else if (company.bought > 0) {
-    saleStatement += `and ${company.bought} material to Company ${company.id}.`;
+    saleStatement += `and ${company.bought} ${company.bought > 1 ? 'units' : 'unit'} to Company ${company.id}.`;
   }
 }
 
@@ -65,4 +65,4 @@ const companyData = [{
   price: 30
 }]
 
-console.log(toWhomToSell(companyData, 42));
+console.log(toWhomToSell(companyData, 12));
