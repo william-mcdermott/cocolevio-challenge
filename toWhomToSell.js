@@ -1,3 +1,5 @@
+let saleStatement = 'Sell ';
+
 const toWhomToSell = (productNeeded, productForSale) => {
   productNeeded = productNeeded.sort((a, b) => b.price - a.price);
   const soldPerCompany = productNeeded.map((company) => {
@@ -6,11 +8,20 @@ const toWhomToSell = (productNeeded, productForSale) => {
     } else {
       company.bought = company.amount;
     };
-    productForSale = productForSale - company.bought
-    return company
+    productForSale = productForSale - company.bought;
+    generateSaleStatement(company, productForSale);
+    return company;
   });
-  return soldPerCompany;
+  return saleStatement;
 };
+
+const generateSaleStatement = (company, productForSale) => {
+  if (company.bought > 0 && productForSale > 0) {
+    saleStatement += `${company.bought} material to Company ${company.id}, `;
+  } else if (company.bought > 0) {
+    saleStatement += `and ${company.bought} material to Company ${company.id}.`;
+  }
+}
 
 const companyData = [{
   id: 'A',
