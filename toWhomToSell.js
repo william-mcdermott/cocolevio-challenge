@@ -17,7 +17,7 @@ const toWhomToSell = (productNeeded, productForSale) => {
 
 const generateSaleStatement = (company, productForSale) => {
   if (company.bought > 0 && productForSale > 0) {
-    saleStatement += `${company.bought} material to Company ${company.id}, `;
+    saleStatement += `${company.bought} ${company.bought > 1 ? 'units' : 'unit'} to Company ${company.id}, `;
   } else if (company.bought > 0) {
     saleStatement += `and ${company.bought} material to Company ${company.id}.`;
   }
