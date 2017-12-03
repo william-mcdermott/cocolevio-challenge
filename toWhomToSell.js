@@ -1,6 +1,24 @@
 const toWhomToSell = (productNeeded, productForSale) => {
-  productNeeded = productNeeded.sort((a, b) => b.price - a.price);
+  productNeeded = productNeeded.sort((a, b) => {
+    if (!b.price) {
+      b.price = 0
+    } else if (!a.price) {
+      a.price = 0
+    }
+    return b.price - a.price
+  });
+  console.log(parseInt('1'));
   const soldPerCompany = productNeeded.map((company) => {
+    const defaultCompany = {
+      id: 'Unidentified Company',
+      amount: 0,
+    };
+    const { id, amount, price } = defaultCompany;
+    company = {
+      id,
+      amount,
+      ...company
+    };
     if (productForSale <= company.amount) {
       company.bought = productForSale;
     } else {
@@ -47,8 +65,7 @@ const companyData = [{
   price: 20
 }, {
   id: 'I',
-  amount: 9,
-  price: 24
+  amount: 9
 }, {
   id: 'J',
   amount: 10,
