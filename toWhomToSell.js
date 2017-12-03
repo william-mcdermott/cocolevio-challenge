@@ -7,13 +7,12 @@ const toWhomToSell = (productNeeded, productForSale) => {
     }
     return b.price - a.price
   });
-  console.log(parseInt('1'));
   const soldPerCompany = productNeeded.map((company) => {
     const defaultCompany = {
       id: 'Unidentified Company',
       amount: 0,
     };
-    const { id, amount, price } = defaultCompany;
+    const { id, amount } = defaultCompany;
     company = {
       id,
       amount,
@@ -65,11 +64,12 @@ const companyData = [{
   price: 20
 }, {
   id: 'I',
-  amount: 9
+  amount: 9,
+  price: 24
 }, {
   id: 'J',
   amount: 10,
   price: 30
 }]
 
-console.log(toWhomToSell(companyData, 12));
+console.log(toWhomToSell(companyData, 20));
